@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OrderDetails } from '../_model/order-details.model';
 import { Product } from '../_model/product.model';
 import { ProductService } from '../_services/product.service';
+import { HttpErrorResponse } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-buy-product',
@@ -14,6 +16,7 @@ export class BuyProductComponent implements OnInit {
 
   isSingleProductCheckout : string = "";
   productDetails : Product[]=[];
+  addressList: string[] = [];
   orderDetails: OrderDetails={
     fullName : '',
 	  fullAddress: '',
@@ -35,8 +38,21 @@ export class BuyProductComponent implements OnInit {
         }
       )
     );
+    this.loadAddressList();
     console.log(this.productDetails);
     console.log(this.orderDetails);
+  }
+
+  private loadAddressList() {
+    this.productService.getAllCities().subscribe(
+      (resp: any) =>{
+        console.log(resp);
+        this.addressList = resp['data'];
+        console.log(this.addressList);
+      }, (error: HttpErrorResponse) => {
+        console.log(error);
+      }
+    )
   }
 
   public placeOrder(orderForm : NgForm){

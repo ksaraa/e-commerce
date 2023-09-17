@@ -18,7 +18,7 @@ import { UserService } from './_services/user.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatFormFieldModule, } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { AddNewProductComponent } from './add-new-product/add-new-product.component';
 import {MatGridListModule} from '@angular/material/grid-list';
@@ -35,6 +35,8 @@ import { RegisterComponent } from './register/register.component';
 import { CartComponent } from './cart/cart.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { OrderDetaisComponent } from './order-detais/order-detais.component';
+import { MatSelectModule } from '@angular/material/select';
+
 
 @NgModule({
   declarations: [
@@ -71,7 +73,8 @@ import { OrderDetaisComponent } from './order-detais/order-detais.component';
     MatGridListModule,
     MatTableModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSelectModule
   ],
   providers: [
     AuthGuard,

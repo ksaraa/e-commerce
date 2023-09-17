@@ -57,5 +57,10 @@ export class ProductService {
     return this.httpClient.get("http://localhost:9090/getCartDetails");
    }
 
+   public getAllCities(){
+    const body = { "country": "serbia"}
+    return this.httpClient.post<any[]>("https://countriesnow.space/api/v0.1/countries/cities", body);
+   }
+
 
 }
